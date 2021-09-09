@@ -15,10 +15,21 @@ public class CarsController {
     @Autowired
     CarsDao carsDao;
 
-    @GetMapping()
+    /*
+     * RequestParam аннотации используются для доступа к значениям
+     * параметров значения из запроса
+     * defaultValue – (Это значение по умолчанив качестве механизма резервирования,
+     * если запрос не имеющее значения илионо пустое.)
+     * name – (Имя параметра, чтобы связать) Name of the parameter to bind
+     * required – (Если параметр является обязательным или нет. Если это правда, не в
+     * состоянии послать этот параметр не удастся.)
+     * value – (Это псевдоним для имени атрибута)
+     */
+    @GetMapping()      // направляем на представление
     public String getNumerOfCars(@RequestParam(value
             = "count", required = false) Integer number, Model model) {
         if (number == null) {
+            // обращаемся в модель за данными по имени бина и методу
             model.addAttribute("carsList", carsDao.getCars(0));
         } else {
             model.addAttribute("carsList", carsDao.getCars(number));

@@ -43,11 +43,8 @@ public class Car {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Car{");
-        sb.append("id=").append(id);
-        sb.append(", carModel='").append(carModel).append('\'');
-        sb.append(", carColor='").append(carColor).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "Car: " + "id=" + id +
+                ", carModel='" + carModel + '\'' +
+                ", carColor='" + carColor + '\'';
     }
 }

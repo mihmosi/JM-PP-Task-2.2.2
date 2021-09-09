@@ -9,8 +9,9 @@ import java.util.stream.Collectors;
 
 @Component
 public class CarsDao {
+         // инициализируем лист
     List<Car> cars;
-
+             // наполняем список
     {
         cars = new ArrayList<>();
         cars.add(new Car(1, "BMW", "black"));
@@ -19,9 +20,10 @@ public class CarsDao {
         cars.add(new Car(4, "Ford", "yellow"));
         cars.add(new Car(5, "Ram", "white"));
     }
-
+/* логика возврата количества машин по аргументу в getCars из контроллера */
     public List<Car> getCars(int numder) {
         if (numder > 0 & numder < 5) {
+            // создаем стрим,  ограничиваем по параметру и возвращаем список
             return cars.stream().limit(numder).collect(Collectors.toList());
         }
         return cars;
