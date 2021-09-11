@@ -6,14 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import web.dao.CarsDao;
+import web.service.CarsServiceIml;
 
 @Controller
 @RequestMapping("/cars")
 public class CarsController {
 
     @Autowired
-    CarsDao carsDao;
+//    CarsDao carsDao;
+    CarsServiceIml carsServiceIml;
 
     /*
      * RequestParam аннотации используются для доступа к значениям
@@ -28,11 +29,12 @@ public class CarsController {
     @GetMapping()      // направляем на представление
     public String getNumerOfCars(@RequestParam(value
             = "count", required = false) Integer number, Model model) {
+
         if (number == null) {
             // обращаемся в модель за данными по имени бина и методу
-            model.addAttribute("carsList", carsDao.getCars(0));
+            model.addAttribute("carsList", carsServiceIml.getCars());
         } else {
-            model.addAttribute("carsList", carsDao.getCars(number));
+            model.addAttribute("carsList", carsServiceIml.getCars(number));
         }
         return "car";
     }
