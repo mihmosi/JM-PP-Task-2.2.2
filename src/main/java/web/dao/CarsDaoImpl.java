@@ -1,13 +1,13 @@
 package web.dao;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class CarsDaoImpl implements CarsDao {
     // инициализируем лист
     private final List<Car> cars;
@@ -24,10 +24,10 @@ public class CarsDaoImpl implements CarsDao {
 
     /* логика возврата количества машин по аргументу в getCars из контроллера */
     @Override
-    public List<Car> getCarsDao(int numder) {
-        if (numder > 0 & numder < 5) {
+    public List<Car> getCarsDao(int number) {
+        if (number > 0 & number < 5) {
             // создаем стрим,  ограничиваем по параметру и возвращаем список
-            return cars.stream().limit(numder).collect(Collectors.toList());
+            return cars.stream().limit(number).collect(Collectors.toList());
         }
         return cars;
     }
