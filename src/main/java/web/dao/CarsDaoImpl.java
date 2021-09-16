@@ -25,11 +25,8 @@ public class CarsDaoImpl implements CarsDao {
     /* логика возврата количества машин по аргументу в getCars из контроллера */
     @Override
     public List<Car> getCarsDao(int number) {
-        if (number > 0 & number < 5) {
-            // создаем стрим,  ограничиваем по параметру и возвращаем список
-            return cars.stream().limit(number).collect(Collectors.toList());
-        }
-        return cars;
+        // создаем стрим,  ограничиваем по параметру и возвращаем список
+        return cars.stream().limit(number).collect(Collectors.toList());
     }
 
     @Override
